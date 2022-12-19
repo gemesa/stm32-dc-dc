@@ -10,10 +10,13 @@ documentation:
   - ./*.md
 
 core:
-  - Core/*
+  - Core/**
 
 driver:
-  - Drivers/*
+  - Drivers/**
+
+middlewares:
+  - Middlewares/**
 
 cubemx:
   - stm32f334c8t6.ioc
