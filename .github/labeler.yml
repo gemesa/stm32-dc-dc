@@ -8,3 +8,19 @@ documentation:
   - LICENSE.md
   - README.md
   - ./*.md
+
+core:
+  - Core/**
+
+driver:
+  - Drivers/**
+
+middlewares:
+  - Middlewares/**
+
+cubemx:
+  - stm32f334c8t6.ioc
+
+build:
+  - Debug/**
+  - STM32F334C8TX_FLASH.ld

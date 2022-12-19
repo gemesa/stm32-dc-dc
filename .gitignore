@@ -1,0 +1,6 @@
+**.o
+**.d
+**.su
+**.elf
+**.map
+stm32*.list
