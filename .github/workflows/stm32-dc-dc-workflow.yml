@@ -1,0 +1,16 @@
+name: stm32-dc-dc workflow
+
+on: [push]
+
+jobs:
+  rgaas-workflow:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: artifacts
