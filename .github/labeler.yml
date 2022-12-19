@@ -21,5 +21,6 @@ middlewares:
 cubemx:
   - stm32f334c8t6.ioc
 
-linker-script:
+build:
+  - Debug/**
   - STM32F334C8TX_FLASH.ld
