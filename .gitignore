@@ -3,4 +3,4 @@
 **.su
 **.elf
 **.map
-**.list
+stm32*.list
