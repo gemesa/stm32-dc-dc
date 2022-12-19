@@ -1,0 +1,10 @@
+ci/cd:
+  - .github/**
+
+chore:
+  - .gitignore
+
+documentation:
+  - LICENSE.md
+  - README.md
+  - ./*.md
