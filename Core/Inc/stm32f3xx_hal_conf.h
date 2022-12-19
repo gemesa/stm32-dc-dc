@@ -33,7 +33,7 @@
   */
 
 #define HAL_MODULE_ENABLED
-  /*#define HAL_ADC_MODULE_ENABLED   */
+  #define HAL_ADC_MODULE_ENABLED
 /*#define HAL_CRYP_MODULE_ENABLED   */
 /*#define HAL_CAN_MODULE_ENABLED   */
 /*#define HAL_CEC_MODULE_ENABLED   */
@@ -41,7 +41,7 @@
 /*#define HAL_NOR_MODULE_ENABLED   */
 /*#define HAL_PCCARD_MODULE_ENABLED   */
 /*#define HAL_SRAM_MODULE_ENABLED   */
-/*#define HAL_HRTIM_MODULE_ENABLED   */
+#define HAL_HRTIM_MODULE_ENABLED
 /*#define HAL_OPAMP_MODULE_ENABLED   */
 /*#define HAL_SDADC_MODULE_ENABLED   */
 /*#define HAL_TSC_MODULE_ENABLED   */
@@ -56,7 +56,7 @@
 /*#define HAL_RNG_MODULE_ENABLED   */
 /*#define HAL_RTC_MODULE_ENABLED   */
 /*#define HAL_SPI_MODULE_ENABLED   */
-/*#define HAL_TIM_MODULE_ENABLED   */
+#define HAL_TIM_MODULE_ENABLED
 /*#define HAL_UART_MODULE_ENABLED   */
 /*#define HAL_USART_MODULE_ENABLED   */
 /*#define HAL_IRDA_MODULE_ENABLED   */
