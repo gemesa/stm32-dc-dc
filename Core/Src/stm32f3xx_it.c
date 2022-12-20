@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "timer.h"
+#include "cmsis_os.h"
 
 /* USER CODE END Includes */
 
@@ -63,6 +64,8 @@ extern HRTIM_HandleTypeDef hhrtim1;
 extern TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN EV */
+
+extern osThreadId xDcDcTaskHandle;
 
 /* USER CODE END EV */
 
@@ -185,11 +188,29 @@ void HRTIM1_TIMA_IRQHandler(void)
 {
     /* USER CODE BEGIN HRTIM1_TIMA_IRQn 0 */
 
+    static uint16_t usTimToggle;
+
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
     /* USER CODE END HRTIM1_TIMA_IRQn 0 */
     HAL_HRTIM_IRQHandler(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A);
     /* USER CODE BEGIN HRTIM1_TIMA_IRQn 1 */
 
     ulHighFrequencyTimerTicks++;
+
+    usTimToggle++;
+    /* (1/10000)s*50 = 0.005s = 5ms */
+    if (50u == usTimToggle)
+    {
+        vTaskNotifyGiveFromISR(xDcDcTaskHandle, &xHigherPriorityTaskWoken);
+
+        if (xHigherPriorityTaskWoken)
+        {
+            portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+        }
+
+        usTimToggle = 0u;
+    }
 
     /* USER CODE END HRTIM1_TIMA_IRQn 1 */
 }

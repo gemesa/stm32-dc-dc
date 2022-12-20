@@ -64,8 +64,8 @@ all: main-build
 main-build: stm32f334c8t6.elf secondary-outputs
 
 # Tool invocations
-stm32f334c8t6.elf stm32f334c8t6.map: $(OBJS) $(USER_OBJS) ../STM32F334C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "stm32f334c8t6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"../STM32F334C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f334c8t6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+stm32f334c8t6.elf stm32f334c8t6.map: $(OBJS) $(USER_OBJS) /vm-share/stm32f334c8t6/STM32F334C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "stm32f334c8t6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/vm-share/stm32f334c8t6/STM32F334C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f334c8t6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

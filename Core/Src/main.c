@@ -24,6 +24,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "adc.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +50,11 @@ HRTIM_HandleTypeDef hhrtim1;
 osThreadId xComTaskHandle;
 osThreadId xDcDcTaskHandle;
 /* USER CODE BEGIN PV */
+
+static uint32_t ulVinRaw;
+static uint32_t ulVoutRaw;
+static uint32_t ulVinPhys;
+static uint32_t ulVoutPhys;
 
 /* USER CODE END PV */
 
@@ -468,12 +475,26 @@ void vDcDcTask(void const *argument)
 {
     /* USER CODE BEGIN vDcDcTask */
 
+    uint32_t ulThreadNotification;
+
     HAL_HRTIM_WaveformCountStart_IT(&hhrtim1, HRTIM_TIMERID_TIMER_A);
+
+    HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+    HAL_ADCEx_InjectedStart_IT(&hadc1);
 
     /* Infinite loop */
     for (;;)
     {
-        osDelay(1);
+        ulThreadNotification = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+        if (ulThreadNotification)
+        {
+            ulVinRaw = HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_1);
+            ulVoutRaw = HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_2);
+
+            ulVinPhys = ulVinRawToPhys(ulVinRaw);
+            ulVoutPhys = ulVoutRawToPhys(ulVoutRaw);
+        }
     }
     /* USER CODE END vDcDcTask */
 }
