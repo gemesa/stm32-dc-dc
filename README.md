@@ -65,7 +65,7 @@ void vDcDcTask(void const * argument)
 }
 ```
 
-Uncomment the control function and set the chosen output voltage in mV (for example 5000u = 5.00V), then the PI controller will set the desired value. The DC-DC task is activated every 5ms in the current configuration, so it can be made it faster if necessary.
+Uncomment the control function and set the chosen output voltage in mV (for example 5000u = 5.00V), then the PI controller will set the desired value. The DC-DC task is activated every 5ms in the current configuration, so it can be made faster if necessary.
 
 ## Results
 
