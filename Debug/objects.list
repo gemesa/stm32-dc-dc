@@ -1,4 +1,6 @@
 "./Core/Src/adc.o"
+"./Core/Src/dc_dc.o"
+"./Core/Src/dc_dc_prv.o"
 "./Core/Src/freertos.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32f3xx_hal_msp.o"

@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "dc_dc.h"
 #include "adc.h"
 
 /* USER CODE END Includes */
@@ -35,6 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -456,11 +458,19 @@ static void MX_GPIO_Init(void)
 void vComTask(void const *argument)
 {
     /* USER CODE BEGIN 5 */
-    /* Infinite loop */
+
+    uint32_t ulThreadNotification;
+
     for (;;)
     {
-        osDelay(1);
+        ulThreadNotification = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+        if (ulThreadNotification)
+        {
+
+        }
     }
+
     /* USER CODE END 5 */
 }
 
@@ -477,12 +487,15 @@ void vDcDcTask(void const *argument)
 
     uint32_t ulThreadNotification;
 
-    HAL_HRTIM_WaveformCountStart_IT(&hhrtim1, HRTIM_TIMERID_TIMER_A);
+    vSetDutyCycleBuck(5000u);
+    vSetAdcTriggerPoint(2500u);
+
+    HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TA1 | HRTIM_OUTPUT_TA2 | HRTIM_OUTPUT_TB1 | HRTIM_OUTPUT_TB2);
+    HAL_HRTIM_WaveformCountStart_IT(&hhrtim1, HRTIM_TIMERID_TIMER_A | HRTIM_TIMERID_TIMER_B);
 
     HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
     HAL_ADCEx_InjectedStart_IT(&hadc1);
 
-    /* Infinite loop */
     for (;;)
     {
         ulThreadNotification = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -494,8 +507,11 @@ void vDcDcTask(void const *argument)
 
             ulVinPhys = ulVinRawToPhys(ulVinRaw);
             ulVoutPhys = ulVoutRawToPhys(ulVoutRaw);
+
+//            vDcDcControl(ulVoutPhys, 5000u);
         }
     }
+
     /* USER CODE END vDcDcTask */
 }
 
