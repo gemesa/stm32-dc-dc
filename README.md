@@ -2,7 +2,7 @@
 
 This project contains the source code of an STM32F334C8T6 based DC-DC converter. The converter can operate in buck, boost and buck-boost (mixed) mode using high resolution timers (HRTIM) and is controlled by a PI controller. The input and output voltages are measured by ADC where the ADC trigger event is synchronized with the duty cycle: the voltages are measured before or after the PWM rising or falling edge (depending on the converter mode and duty cycle), this way the measurement noise can be minimalized.
 
-The code has been implemented using STM32CubeIDE.
+The code has been implemented using STM32CubeIDE. For more information see the detailed documentation under the pull requests.
 
 ## Deployment
 
@@ -65,7 +65,7 @@ void vDcDcTask(void const * argument)
 }
 ```
 
-Uncomment the control function and set the chosen output voltage in mV (for example 5000u = 5.00V), then the PI controller will set the desired value. The DC-DC task is activated every 5ms in the current configuration, so it canbe made it faster if necessary.
+Uncomment the control function and set the chosen output voltage in mV (for example 5000u = 5.00V), then the PI controller will set the desired value. The DC-DC task is activated every 5ms in the current configuration, so it can be made it faster if necessary.
 
 ## Results
 
@@ -76,6 +76,4 @@ The following measurements illustrate the different working modes:
 ![mixed](Measurements/mixed.png)
 
 ![boost](Measurements/boost.png)
-
-For more information see the detailed documentation under the pull requests.
 
