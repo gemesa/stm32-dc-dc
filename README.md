@@ -77,3 +77,6 @@ The following measurements illustrate the different working modes:
 
 ![boost](Measurements/boost.png)
 
+## License
+
+This project contains files from multiple sources with different licenses. The relevant license is added to every source file.
