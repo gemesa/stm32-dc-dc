@@ -1,8 +1,8 @@
 # stm32-dc-dc
 
-This project contains the source code of an STM32F334C8T6 based DC-DC converter. The converter can operate in buck, boost and buck-boost (mixed) mode using high resolution timers (HRTIM) and is controlled by a PI controller. The input and output voltages are measured by ADC where the ADC trigger event is synchronized with the duty cycle: the voltages are measured before or after the PWM rising or falling edge (depending on the converter mode and duty cycle), this way the measurement noise can be minimalized.
+This project contains the source code of an [STM32F334C8T6](https://www.st.com/en/evaluation-tools/32f3348discovery.html) based DC-DC converter. The converter can operate in buck, boost and buck-boost (mixed) mode using high resolution timers (HRTIM) and is controlled by a PI controller. The input and output voltages are measured by ADC where the ADC trigger event is synchronized with the duty cycle: the voltages are measured before or after the PWM rising or falling edge (depending on the converter mode and duty cycle), this way the measurement noise can be minimalized.
 
-The code has been implemented using STM32CubeIDE. For more information see the detailed documentation under the pull requests.
+The code has been implemented using [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html). For more information see the detailed documentation under the pull requests.
 
 ## Deployment
 
@@ -21,7 +21,7 @@ $ cd Debug
 $ make all
 ```
 
-which will build the _stm32f334c8t6.elf_ binary file (use your preferred method to download it, the SWD interface is configured so it can be used with an ST-LINK hardware).
+which will build the _stm32f334c8t6.elf_ binary file (use your preferred method to download it, the SWD interface is configured so it can be used with an [ST-LINK](https://www.st.com/en/development-tools/st-link-v2.html) hardware).
 
 Note: the SW can be built from STM32CubeIDE also (after importing the _.project_ and _.cproject_ files).
 
