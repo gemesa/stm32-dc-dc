@@ -6,7 +6,7 @@
 *
 * @attention
 *
-* Copyright (c) 2023 András Gémes. All rights reserved.
+* Copyright (c) 2024 András Gémes. All rights reserved.
 *
 * This software component is licensed by András Gémes under MIT license.
 * You may obtain a copy of the license at: opensource.org/licenses/mit
