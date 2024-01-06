@@ -3,7 +3,7 @@ name: stm32-dc-dc workflow
 on: [push]
 
 jobs:
-  rgaas-workflow:
+  stm32-dc-dc-workflow:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
